@@ -25,5 +25,5 @@ Some notes:
 
 Commentary: 
 
- 1. The default "pageable" implementaion looks like it runs a count query to figure out the total number of items before running the query itself.  Not only is this a bit racy, it also doesn't scale very well against large data sets or complex queries.  So, it's something to be used judiciously, and NOT as a way to break up work into batches.  Looks like the find():Iterable methods are a better direction.
+ 1. The default "pageable" implementation looks like it runs a count query to figure out the total number of items before running the query itself.  Not only is this a bit racy, it also doesn't scale very well against large data sets or complex queries.  So, it's something to be used judiciously, and NOT as a way to break up work into batches.  Looks like the find():Iterable methods are a better direction.
  
