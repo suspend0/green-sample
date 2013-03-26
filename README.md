@@ -20,3 +20,10 @@ Some notes:
  1. Note the dependency injection uses the annotation-style (yay!) and classpath scanning (boo!).  Having everything in front of you with annotations is awesome, but classpath scanning gives me the creeps, but maybe beets XML.  I am not sure about this balance, what the relationship between these is or what.
  
  1. I don't have a front-end view model at all.
+ 
+ 1. There are a few query mechanisms, the newest of which is "QueryDSL" -- this [blog post](http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-five-querydsl/) has a quick tutorial.
+
+Commentary: 
+
+ 1. The default "pageable" implementaion looks like it runs a count query to figure out the total number of items before running the query itself.  Not only is this a bit racy, it also doesn't scale very well against large data sets or complex queries.  So, it's something to be used judiciously, and NOT as a way to break up work into batches.  Looks like the find():Iterable methods are a better direction.
+ 
