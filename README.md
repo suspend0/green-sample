@@ -11,7 +11,7 @@ Structure:
  * package model - the 'M' in MVC
  * package store - data storage API
 
-Some notes:
+#### Basic notes
 
  1. In addition to basic Spring, this is also using "Spring Data" which has a bunch of convenience things around CRUD operations.  In particular note how there is no implementation of the repositories in the 'store' package.  They are magically created.  See [this tutorial](http://blog.springsource.org/2011/02/10/getting-started-with-spring-data-jpa/) for details.
  
@@ -23,7 +23,13 @@ Some notes:
  
  1. There are a few query mechanisms, the newest of which is "QueryDSL" -- this [blog post](http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-part-five-querydsl/) has a quick tutorial.
 
-Commentary: 
+#### Commentary
 
- 1. The default "pageable" implementation looks like it runs a count query to figure out the total number of items before running the query itself.  Not only is this a bit racy, it also doesn't scale very well against large data sets or complex queries.  So, it's something to be used judiciously, and NOT as a way to break up work into batches.  Looks like the find():Iterable methods are a better direction.
+ 1. The default "pageable" implementation looks like it runs a count query to figure out the total number of items before running the query itself.  Not only is this a bit racy, it also doesn't scale very well against large data sets or complex queries.  So, it's something to be used judiciously, and NOT as a way to break up work into batches.  Looks like the find():Iterable methods are a better direction, but ...
  
+ 1. Although we're using Hibernate underneath, it's spring-data on top, with JPA in the middle.  By default both Hibernate and JPA put the results in a List in memory.  Any query that returns, say 50K rows will be hurtful.  Ouch.
+    * JPA doesn't have any support for large-result-set queries. So to do our "real work" we'll need to abandon the niceties of spring-data and JPA.
+    * Hibernate does have some support for large-result queries, through its [StatelessSession interface and ScrollableResults object](http://docs.jboss.org/hibernate/core/3.3/reference/en/html/batch.html#batch-statelesssession).  This resembles JDBC more than regular hibernate, but it does share some things.
+    * I'd like to get a better understanding of how much of the app is "domain model persistence" (Hibernate's raison d'etre) and how much is "bulk processing" -- decidedly not Hibernate's forte, before making a decision here.
+
+
