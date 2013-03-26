@@ -25,6 +25,8 @@ Structure:
 
 #### Commentary
 
+ 1. We might not need the fancy Spring Data stuff.  Looks handy for building domain model persistence, but are we doing much of that?
+
  1. The default "pageable" implementation looks like it runs a count query to figure out the total number of items before running the query itself.  Not only is this a bit racy, it also doesn't scale very well against large data sets or complex queries.  So, it's something to be used judiciously, and NOT as a way to break up work into batches.  Looks like the find():Iterable methods are a better direction, but ...
  
  1. Although we're using Hibernate underneath, it's spring-data on top, with JPA in the middle.  By default both Hibernate and JPA put the results in a List in memory and stores every accessed object in memory to provide a consistent view.  Any query that returns, say 50K rows will be hurtful.  Ouch.
