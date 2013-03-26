@@ -30,6 +30,7 @@ Structure:
  1. Although we're using Hibernate underneath, it's spring-data on top, with JPA in the middle.  By default both Hibernate and JPA put the results in a List in memory.  Any query that returns, say 50K rows will be hurtful.  Ouch.
     * JPA doesn't have any support for large-result-set queries. So to do our "real work" we'll need to abandon the niceties of spring-data and JPA.
     * Hibernate does have some support for large-result queries, through its [StatelessSession interface and ScrollableResults object](http://docs.jboss.org/hibernate/core/3.3/reference/en/html/batch.html#batch-statelesssession).  This resembles JDBC more than regular hibernate, but it does share some things.
+    * Hibernate also has support for large results sets through the use of [batch loading](http://docs.jboss.org/hibernate/orm/3.3/reference/en-US/html/performance.html#performance-fetching-batch) on top "proxy fetching".  Bascially we do the query for X identifiers, creating proxy objects for each, and load N at a time from the DB.  And then clear the session too, I guess.  So there's a bit of tediousness here.
     * I'd like to get a better understanding of how much of the app is "domain model persistence" (Hibernate's raison d'etre) and how much is "bulk processing" -- decidedly not Hibernate's forte, before making a decision here.
 
 
