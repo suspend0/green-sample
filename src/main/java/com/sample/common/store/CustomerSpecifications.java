@@ -1,5 +1,7 @@
-package com.sample.common.model;
+package com.sample.common.store;
 
+import com.sample.common.model.Account;
+import com.sample.common.model.Customer;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -14,10 +16,7 @@ import java.util.Date;
 public class CustomerSpecifications {
 
     /**
-     * All customers with an {@link Account} expiring before the given date.
-     *
-     * @param date
-     * @return
+     * All customers with an {@link com.sample.common.model.Account} expiring before the given date.
      */
     public static Specification<Customer> accountExpiresBefore(final LocalDate date) {
 
@@ -27,7 +26,7 @@ public class CustomerSpecifications {
             public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 
                 Root<Account> accounts = query.from(Account.class);
-                Path<Date> expiryDate = accounts.<Date>get("expiryDate");
+                Path<Date> expiryDate = accounts.get("expiryDate");
                 Predicate customerIsAccountOwner = cb.equal(accounts.<Customer>get("customer"), root);
                 Predicate accountExpiryDateBefore = cb.lessThan(expiryDate, date.toDateMidnight().toDate());
 

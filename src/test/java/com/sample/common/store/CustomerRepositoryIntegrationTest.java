@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import java.util.List;
 
-import static com.sample.common.model.CustomerSpecifications.accountExpiresBefore;
+import static com.sample.common.store.CustomerSpecifications.accountExpiresBefore;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.springframework.data.jpa.domain.Specifications.where;
