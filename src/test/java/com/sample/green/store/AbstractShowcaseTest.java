@@ -1,4 +1,4 @@
-package com.sample.common.store;
+package com.sample.green.store;
 
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.transaction.BeforeTransaction;

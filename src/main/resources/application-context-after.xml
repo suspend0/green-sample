@@ -9,6 +9,6 @@
 
     <import resource="infrastructure.xml" />
 
-    <jpa:repositories base-package="com.sample.common.store"/>
+    <jpa:repositories base-package="com.sample.green.store"/>
 
 </beans>

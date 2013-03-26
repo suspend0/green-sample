@@ -1,4 +1,4 @@
-package com.sample.common.model;
+package com.sample.green.model;
 
 import javax.persistence.*;
 import java.util.Date;

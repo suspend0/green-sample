@@ -1,6 +1,6 @@
-package com.sample.common.store;
+package com.sample.green.store;
 
-import com.sample.common.model.Customer;
+import com.sample.green.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

@@ -1,6 +1,6 @@
-package com.sample.common.controller;
+package com.sample.green.controller;
 
-import com.sample.common.model.Shop;
+import com.sample.green.model.Shop;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

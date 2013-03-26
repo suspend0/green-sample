@@ -1,6 +1,6 @@
-package com.sample.common.store;
+package com.sample.green.store;
 
-import com.sample.common.model.Customer;
+import com.sample.green.model.Customer;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import java.util.List;
 
-import static com.sample.common.store.CustomerSpecifications.accountExpiresBefore;
+import static com.sample.green.store.CustomerSpecifications.accountExpiresBefore;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import static org.springframework.data.jpa.domain.Specifications.where;

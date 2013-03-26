@@ -1,7 +1,7 @@
-package com.sample.common.store;
+package com.sample.green.store;
 
-import com.sample.common.model.Account;
-import com.sample.common.model.Customer;
+import com.sample.green.model.Account;
+import com.sample.green.model.Customer;
 import org.joda.time.LocalDate;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -16,7 +16,7 @@ import java.util.Date;
 public class CustomerSpecifications {
 
     /**
-     * All customers with an {@link com.sample.common.model.Account} expiring before the given date.
+     * All customers with an {@link com.sample.green.model.Account} expiring before the given date.
      */
     public static Specification<Customer> accountExpiresBefore(final LocalDate date) {
 
