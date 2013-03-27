@@ -17,7 +17,7 @@ Structure:
  
  1. There's a controller class return JSON. You can hit it at /green-sample/rest/kfc/brands/foo
  
- 1. Note the dependency injection uses the annotation-style (yay!) and classpath scanning (boo!).  Having everything in front of you with annotations is awesome, but classpath scanning gives me the creeps, but maybe beets XML.  I am not sure about this balance, what the relationship between these is or what.
+ 1. Note the dependency injection uses the annotation-style (yay!) and classpath scanning (boo!).  Having everything in front of you with annotations is awesome, but classpath scanning gives me the creeps, but maybe beats XML.  I am not sure about this balance, what the relationship between these is or what.
  
  1. I don't have a front-end view model at all.
  
